@@ -6,10 +6,10 @@ spring:
       host: 159.75.201.112
       port: 27017
 
-visual:
-  flow:
-    webUIPath: /visual-flow3212
-    enableDefaultApi: true
+#visual:
+#  flow:
+#    webUIPath: /visual-flow3212
+#    enableDefaultApi: true
 #    compileScriptApiPath: /compile-script
 
 #    resourcePrefix: /task-service
