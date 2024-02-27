@@ -1,15 +1,18 @@
 server:
   port: 8001
+#  servlet:
+#    context-path: /api/v1
 spring:
   data:
     mongodb:
       host: 159.75.201.112
       port: 27017
 
+
 #visual:
 #  flow:
-#    webUIPath: /visual-flow3212
-#    enableDefaultApi: true
-#    compileScriptApiPath: /compile-script
-
-#    resourcePrefix: /task-service
+#    apiPrefix: /api/v1
+##    enableDefaultApi: true
+##    compileScriptApiPath: /compile-script
+##    listWorkflowsApiPath: /engine/workflowList
+#    resourcePrefix: /api/v1

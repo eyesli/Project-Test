@@ -1,7 +1,11 @@
-
-import com.github.managetech.utils.SpringContext
-import com.levil.mongo.api.Api
-def api22 = SpringContext.getBean(Api.class).api22()
-binding.setVariable("api22", api22)
-String currentDir = System.getProperty("user.dir")
-return currentDir
+//package com.levil.mongo.groovy
+//
+//@groovy.transform.CompileDynamic
+//decision_rule("Minor in India") {
+//    when = {
+//        it.age < 18 && it.country == "India"
+//    }
+//    then = {
+//        it.age = 1000
+//    }
+//}
