@@ -5,8 +5,11 @@ server:
 spring:
   data:
     mongodb:
-      host: 159.75.201.112
+      host: 8.137.20.123
       port: 27017
+      username: levi
+      password: li199523
+      database: pro_dbserver
 
 
 #visual:
