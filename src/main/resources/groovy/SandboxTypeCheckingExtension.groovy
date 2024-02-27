@@ -21,6 +21,9 @@ class SandboxTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.Ty
 
         onMethodSelection { Expression expr, MethodNode methodNode ->
 
+            if (methodNode.name=='decision_rule') {
+                return makeDynamic(expr, CLOSURE_TYPE)
+            }
             if (methodNode.declaringClass.name == 'java.lang.System' ||
                     methodNode.declaringClass.name == 'java.lang.Runtime' ||
                     methodNode.declaringClass.name == 'java.lang.Class') {
@@ -45,7 +48,7 @@ class SandboxTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.Ty
             }
         }
         unresolvedProperty { PropertyExpression pexp ->
-            makeDynamic(pexp, BINDING_TYPE)
+            makeDynamic(pexp)
         }
 
     }

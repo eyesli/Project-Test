@@ -19,8 +19,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import static org.codehaus.groovy.ast.ClassHelper.CLOSURE_TYPE;
-
 @RestController
 @Slf4j
 public class Api {
@@ -34,7 +32,6 @@ public class Api {
         File file = new File( System.getProperty("user.dir")+"\\src\\main\\java\\com\\levil\\mongo\\groovy\\Test2.groovy");
         ArrayList<File> objects = new ArrayList<>();
         objects.add(file);
-//        CLOSURE_TYPE
         Binding binding = new Binding();
         workflowManager.localTestScript(objects, binding);
         return binding;
