@@ -1,4 +1,4 @@
-package com.levil.mongo.dao;
+package com.levil.mongo.dao.entity;
 
 
 import io.github.code.visual.model.ScriptMetadata;

@@ -32,9 +32,7 @@ class SandboxTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.Ty
         }
 
         unresolvedVariable { VariableExpression var ->
-            if (var.name == 'when' || var.name == 'then') {
-                return makeDynamic(var, CLOSURE_TYPE)
-            }
+            handle=true
         }
         methodNotFound { ClassNode receiver, String name, ArgumentListExpression argList, ClassNode[] argTypes, MethodCall call ->
 
@@ -48,7 +46,7 @@ class SandboxTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.Ty
             }
         }
         unresolvedProperty { PropertyExpression pexp ->
-            makeDynamic(pexp)
+          handle=true
         }
 
     }

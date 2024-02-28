@@ -1,5 +1,6 @@
 package com.levil.mongo.dao;
 
+import com.levil.mongo.dao.entity.WorkflowMetadataDO;
 import io.github.code.visual.model.WorkflowIdAndName;
 import io.github.code.visual.model.WorkflowMetadata;
 import io.github.code.visual.workflow.WorkflowMetadataRepository;
