@@ -43,7 +43,7 @@
 // * @since 09/18/2023
 // */
 //@Service
-//public class WorkflowManagerImpl2 implements WorkflowManager {
+//public class MyWorkflowManagerImpl implements WorkflowManager {
 //    private final Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 //
 //    private final CompilerConfiguration config;
@@ -51,7 +51,7 @@
 //    private GroovyClassLoader groovyClassLoader;
 //
 //    @Autowired
-//    public WorkflowManagerImpl2(CompilerConfiguration config, WorkflowMetadataRepository workflowMetadataRepository) {
+//    public MyWorkflowManagerImpl(CompilerConfiguration config, WorkflowMetadataRepository workflowMetadataRepository) {
 //        this.config = config;
 //        this.workflowMetadataRepository = workflowMetadataRepository;
 //        groovyClassLoader = new GroovyClassLoader(Thread.currentThread().getContextClassLoader(), config);
