@@ -12,7 +12,7 @@ import org.codehaus.groovy.transform.stc.GroovyTypeCheckingExtensionSupport
 
 //    GroovyTypeCheckingExtensionSupport groovyTypeCheckingExtensionSupport = new GroovyTypeCheckingExtensionSupport();
 
-
+//https://github.com/apache/groovy/blob/master/src/test-resources/groovy/transform/stc/MissingMethod2TestExtension.groovy
 // 安全检查，防止调用敏感方法
 class SandboxTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.TypeCheckingDSL {
 
@@ -21,32 +21,38 @@ class SandboxTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.Ty
 
         onMethodSelection { Expression expr, MethodNode methodNode ->
 
-            if (methodNode.name=='decision_rule') {
-                return makeDynamic(expr, CLOSURE_TYPE)
-            }
+
             if (methodNode.declaringClass.name == 'java.lang.System' ||
                     methodNode.declaringClass.name == 'java.lang.Runtime' ||
                     methodNode.declaringClass.name == 'java.lang.Class') {
                 addStaticTypeError("Method is not allowed!", expr)
+            }else {
+                handled = true
+//                return makeDynamic(expr)
             }
         }
 
         unresolvedVariable { VariableExpression var ->
-            handle=true
+            handled = true
+            if (var.name == 'when' || var.name == 'then') {
+                storeType(var, CLOSURE_TYPE)
+            }
         }
         methodNotFound { ClassNode receiver, String name, ArgumentListExpression argList, ClassNode[] argTypes, MethodCall call ->
 
-            if (isMethodCallExpression(call)
-                    && call.implicitThis
-                    && 'decision_rule' == name
-                    && argTypes.length == 2
-                    && argTypes[0] == classNodeFor(String)
-            ) {
-                makeDynamic(call, CLOSURE_TYPE)
+            if ('decision_rule' == name) {
+                return  makeDynamic(call, CLOSURE_TYPE)
             }
+            if ("compareTo"==name){
+                 newMethod(name, STRING_TYPE)
+            }
+//            return newMethod(name, STRING_TYPE)
         }
         unresolvedProperty { PropertyExpression pexp ->
-          handle=true
+            handled = true
+        }
+        unresolvedAttribute { attr ->
+            handled = true
         }
 
     }
