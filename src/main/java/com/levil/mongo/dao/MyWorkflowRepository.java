@@ -1,6 +1,7 @@
 package com.levil.mongo.dao;
 
 import com.levil.mongo.dao.entity.WorkflowMetadataDO;
+import groovy.lang.GroovyClassLoader;
 import io.github.code.visual.model.WorkflowIdAndName;
 import io.github.code.visual.model.WorkflowMetadata;
 import io.github.code.visual.workflow.WorkflowMetadataRepository;
@@ -10,8 +11,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Repository
@@ -89,9 +93,22 @@ public class MyWorkflowRepository implements WorkflowMetadataRepository {
         BeanUtils.copyProperties(save, workflowMetadata1);
         return workflowMetadata1;
     }
+    private final Map<String, Class> parseClassCache = new ConcurrentHashMap<>();
 
     @Override
     public WorkflowMetadata findByWorkflowName(String workflowName) {
         return null;
+    }
+
+    @Override
+    public Class<?> getClassFromCache(GroovyClassLoader groovyClassLoader, String scriptText) {
+        String md5 = DigestUtils.md5DigestAsHex(scriptText.getBytes());
+        Class aClass = parseClassCache.get(md5);
+        if (aClass == null) {
+            Class parseClass = groovyClassLoader.parseClass(scriptText);
+            parseClassCache.put(md5, parseClass);
+            return parseClass;
+        }
+        return aClass;
     }
 }

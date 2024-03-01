@@ -44,7 +44,7 @@ public class GroovyConfig {
     public CompilerConfiguration compilerConfiguration(SecureASTCustomizer secure) {
         final CompilerConfiguration config = new CompilerConfiguration();
             ASTTransformationCustomizer astcz = new ASTTransformationCustomizer(
-                    singletonMap("extensions", singletonList("groovy/SandboxTypeCheckingExtension.groovy")),
+                    singletonMap("extensions", singletonList("groovy/SecureExtension.groovy")),
                     TypeChecked.class);
         config.addCompilationCustomizers(secure,astcz);
         config.setSourceEncoding("UTF-8");
