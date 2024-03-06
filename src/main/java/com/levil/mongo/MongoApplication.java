@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +27,7 @@ import static org.codehaus.groovy.ast.ClassHelper.CLOSURE_TYPE;
 
 
 @SpringBootApplication(scanBasePackages = "com.levil",exclude={DataSourceAutoConfiguration.class})
+@CrossOrigin
 public class MongoApplication {
 
     public static void main(String[] args) {

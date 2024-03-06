@@ -21,7 +21,40 @@
         <dependency>
             <groupId>io.github.code-visual</groupId>
             <artifactId>visual-flowengine-spring-boot-starter</artifactId>
-            <version>1.0.5-test</version>
+            <version>1.0.7</version>
+
+        </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.54</version>
+        </dependency>
+<!--        implementation 'org.apache.commons:commons-lang3:3.12.0'-->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+<!--        implementation 'org.apache.commons:commons-collections4:4.4'-->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+<!--        implementation 'com.google.guava:guava:31.1-jre'-->
+
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.26</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

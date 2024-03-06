@@ -10,7 +10,6 @@ import org.codehaus.groovy.ast.expr.PropertyExpression
 import org.codehaus.groovy.ast.expr.VariableExpression
 import org.codehaus.groovy.transform.stc.GroovyTypeCheckingExtensionSupport
 
-//    GroovyTypeCheckingExtensionSupport groovyTypeCheckingExtensionSupport = new GroovyTypeCheckingExtensionSupport();
 
 //https://github.com/apache/groovy/blob/master/src/test-resources/groovy/transform/stc/MissingMethod2TestExtension.groovy
 // 安全检查，防止调用敏感方法

@@ -93,22 +93,9 @@ public class MyWorkflowRepository implements WorkflowMetadataRepository {
         BeanUtils.copyProperties(save, workflowMetadata1);
         return workflowMetadata1;
     }
-    private final Map<String, Class> parseClassCache = new ConcurrentHashMap<>();
-
     @Override
     public WorkflowMetadata findByWorkflowName(String workflowName) {
         return null;
     }
 
-    @Override
-    public Class<?> getClassFromCache(GroovyClassLoader groovyClassLoader, String scriptText) {
-        String md5 = DigestUtils.md5DigestAsHex(scriptText.getBytes());
-        Class aClass = parseClassCache.get(md5);
-        if (aClass == null) {
-            Class parseClass = groovyClassLoader.parseClass(scriptText);
-            parseClassCache.put(md5, parseClass);
-            return parseClass;
-        }
-        return aClass;
-    }
 }

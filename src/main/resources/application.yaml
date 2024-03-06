@@ -15,7 +15,7 @@ spring:
     #是否对响应数据开启gzip压缩,默认false
     enabled: true
     #响应内容长度超过设置大小时进行压缩,默认值为2048(2KB,不带单位时默认为字节)
-    min-response-size: 1024KB
+    min-response-size: 500KB
     #对指定的响应类型进行压缩,值是数组,用逗号隔开
     mime-types: text/javascript
 
